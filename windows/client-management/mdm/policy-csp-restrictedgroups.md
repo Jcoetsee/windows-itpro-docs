@@ -111,11 +111,19 @@ Starting in Windows 10, version 1809, you can use this schema for retrieval and 
 <!--Example-->
 Here is an example:
 
+Provided Example:
+OMA-URI: ./Device/Vendor/MSFT/Policy/Config/RestrictedGroups/ConfigureGroupMembership
 ```
 <groupmembership>
- <accessgroup desc="Group SID for Administrators">
-    <member name = "S-188-5-5666-5-688"/>
-  </accessgroup>
+    <accessgroup desc="Administrators">
+        <member name="AzureAD\CSPTest@contoso.com" />
+        <member name="CSPTest22306\administrator" />
+        <member name = "AzureAD\patlewis@contoso.com" />
+    </accessgroup>
+    <accessgroup desc = "testcsplocal">
+        <member name = "CSPTEST22306\patlewis" />
+        <member name = "AzureAD\CSPTest@contoso.com" />
+    </accessgroup>
 </groupmembership>
 ```
 <!--/Example-->
@@ -124,6 +132,10 @@ Here is an example:
 <!--/Validation-->
 <!--/Policy-->
 <hr/>
+
+Take note:
+* You must include the local administrator in the administrators group or the policy will fail
+* Include the entire UPN after AzureAD
 
 Footnote:
 
